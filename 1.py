@@ -1,13 +1,16 @@
 import RPi.GPIO as GPIO
-
+from picamera import PiCamera
+from time import sleep
 
 #Sets the GPIO to the BCM state
 GPIO.setmode(GPIO.BCM) 
-
 DEBOUCE_TIME = 500 #Sets the defualt debouce time for the buttons
+camera = PiCamera()
 
 
-def recordButtonPressed
+def recordButtonPressed(time)
+    
+
 
 # GPIO 23 set up as input. It is pulled up to stop false signals  
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
