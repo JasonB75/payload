@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from picamera import PiCamera
 from time import sleep
+from subprocess  import call 
 
 #Sets the GPIO to the BCM state/pin layout
 GPIO.setmode(GPIO.BCM) 
