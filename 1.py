@@ -2,27 +2,35 @@ import RPi.GPIO as GPIO
 from picamera import PiCamera
 from time import sleep
 
-#Sets the GPIO to the BCM state
+#Sets the GPIO to the BCM state/pin layout
 GPIO.setmode(GPIO.BCM) 
-DEBOUCE_TIME = 500 #Sets the defualt debouce time for the buttons
+#DEBOUCE_TIME = 500 #Sets the defualt debouce time for the buttons
+
+#Inicializes the camera object
 camera = PiCamera()
-
-
-def recordButtonPressed(time)
-#TAB THESE
-camera.start_preview()
-sleep(2)
-camera.capture('/home/pi/Desktop/image.jpg')
-camera.start_recording('/home/pi/Desktop/video.h264')
-sleep(2)
-camera.stop_recording()
-camera.stop_preview()
-
 
 # GPIO 23 set up as input
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
 
+
+#Function called when
+def recordButtonPressed(time)
+    # Activates the camera and allows it to focus
+    camera.start_preview()
+    sleep(2)
+    
+    #Takes Picuture then begins recording video
+    camera.capture('/home/pi/Desktop/image.jpg')
+    camera.start_recording('/home/pi/Desktop/video.h264')
+    sleep(2) #Waits while recording video
+    
+    #Stops recording and turns off camera
+    camera.stop_recording()
+    camera.stop_preview()
+    
+    
 try:  
+    #Waits till the putton is pressed, connecting pin 23 to ground.
     GPIO.wait_for_edge(23, GPIO.FALLING)  
     recordButtonPressed()
     print "whatever was waiting for a button press."  
