@@ -13,7 +13,7 @@ camera = PiCamera()
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
 
 
-#Function called when
+#Function called when the button is pressed
 def recordButtonPressed(time)
     # Activates the camera and allows it to focus
     camera.start_preview()
@@ -27,6 +27,11 @@ def recordButtonPressed(time)
     #Stops recording and turns off camera
     camera.stop_recording()
     camera.stop_preview()
+    
+    #Runs shell command to convert video to mp4
+    command = "MP4Box -add beepvid.h264 beepvid.mp4"
+    call([command], shell=True)
+    print("vid conv")
     
     
 try:  
