@@ -1,7 +1,9 @@
+####Note to self - https://dbader.org/blog/python-check-if-file-exists ###
 import RPi.GPIO as GPIO
 from picamera import PiCamera
 from time import sleep
 from subprocess  import call 
+import os.path
 
 #Sets the GPIO to the BCM state/pin layout
 GPIO.setmode(GPIO.BCM) 
